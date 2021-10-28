@@ -1,3 +1,8 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   background: rgb(206, 204, 204);
 }
@@ -7,10 +12,23 @@ main {
   min-height: 600px;
 }
 
+.container {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 500px;
+  background: white;
+  border-radius: 0.5em;
+}
+
 ul {
   list-style: none;
 }
 
 li {
   padding: 1em;
+  border-bottom: 1px solid #ddd;
 } 
