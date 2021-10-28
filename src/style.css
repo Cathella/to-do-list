@@ -1,3 +1,16 @@
 body {
-  background: bisque;
+  background: rgb(206, 204, 204);
 }
+
+main {
+  position: relative;
+  min-height: 600px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 1em;
+} 
