@@ -19,7 +19,7 @@ const taskForm = () => {
 
 // function to iterate over the tasks array and populate an HTML list item element for each task
 const iterateTasks = (task) => {
-  const li = document.createElement("li");
+  const li = document.createElement('li');
   li.innerHTML = `
     <div>
       <input type="checkbox">
@@ -37,5 +37,5 @@ const clearBtn = () => {
 };
 
 export {
-  iterateTasks, addTitle, taskForm, clearBtn
+  iterateTasks, addTitle, taskForm, clearBtn,
 };
