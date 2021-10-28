@@ -9,7 +9,7 @@ const addTitle = () => {
 
 // task form
 const taskForm = () => {
-  const form = document.createElement("form");
+  const form = document.createElement('form');
   form.innerHTML = `
     <input type="text" placeholder="Add to your list ...">
     <input type="submit" value="Submit" hidden>
@@ -19,21 +19,23 @@ const taskForm = () => {
 
 // function to iterate over the tasks array and populate an HTML list item element for each task
 const iterateTasks = (task) => {
-  let li = document.createElement("li");
+  const li = document.createElement("li");
   li.innerHTML = `
     <div>
       <input type="checkbox">
       ${task.description}
     </div>
   `;
-  document.getElementById("todo-list").appendChild(li);
-}
+  document.getElementById('todo-list').appendChild(li);
+};
 
 // clear completed tasks btn
 const clearBtn = () => {
-  let btn = document.createElement('button');
+  const btn = document.createElement('button');
   btn.innerHTML = 'Clear all completed';
   document.getElementById('todo-list').appendChild(btn);
 };
 
-export { iterateTasks, addTitle, taskForm, clearBtn };
+export {
+  iterateTasks, addTitle, taskForm, clearBtn
+};
