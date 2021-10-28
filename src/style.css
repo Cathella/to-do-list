@@ -37,11 +37,12 @@ ul {
 li {
   padding: 1em;
   border-bottom: 1px solid #ddd;
+  cursor: pointer;
 }
 
 form {
   width: 100%;
-  background: bisque;
+  border-bottom: 1px solid #ddd;
 }
 
 input[type=text] {
@@ -62,6 +63,6 @@ button {
   padding: 1.1em;
   border: none;
   font-weight: bold;
-  color: #777;
+  cursor: pointer;
   border-radius: 0 0 0.5em 0.5em;
 }
