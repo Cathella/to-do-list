@@ -35,6 +35,10 @@ const addTask = (task) => {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
+const completedTask = (task) => {
+  
+}
+
 export {
   displayTasks, addTask, addTaskToList, getTasks,
 };

@@ -1,9 +1,5 @@
 import './style.css';
 
-// import tasks from './tasks.js';
-import {
-  clearBtn,
-} from './app.js';
 import {
   displayTasks, addTask, addTaskToList, getTasks,
 } from './status.js';
@@ -18,7 +14,6 @@ class Task {
 
 window.onload = () => {
   displayTasks(); // list tasks
-  clearBtn(); // complete tasks button
 };
 
 // add task event
