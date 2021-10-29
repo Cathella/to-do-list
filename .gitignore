@@ -1,4 +1,5 @@
 node_modules
-/.stylelintrc.json
-/.hintrc
-/.eslintrc.json
+.hintrc
+.stylelintrc.json
+.eslintrc.json
+package.json
