@@ -13,10 +13,10 @@ const getTasks = () => {
 };
 
 const saveTasks = () => {
-  let todos = tasks;
+  const todos = tasks;
 
   localStorage.setItem('tasks', JSON.stringify(todos));
-}
+};
 
 const checkStatus = (task) => task.checked;
 
@@ -51,7 +51,7 @@ const addTaskToList = (task) => {
     saveTasks();
   });
 
-  if (tasks[checkBox.id].completed == true) {
+  if (tasks[checkBox.id].completed === true) {
     desc.classList.add('line-through');
   }
 };
