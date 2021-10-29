@@ -9,6 +9,14 @@
 <main>
   <div class="container">
     <!-- create an empty todo list placeholder -->
+    <header>
+      <h3>Today's To Do</h3>
+    </header>
+    <form action="" id="form">
+      <input type="text" placeholder="Add to your list ..." id="description" onfocus="this.value=''">
+      <input type="submit" value="Submit" hidden>
+      <!-- <button type="submit">Add</button> -->
+    </form>
     <ul id="todo-list"></ul>
   </div>
 </main>

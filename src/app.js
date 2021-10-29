@@ -11,22 +11,11 @@ const addTitle = () => {
 const taskForm = () => {
   const form = document.createElement('form');
   form.innerHTML = `
-    <input type="text" placeholder="Add to your list ...">
+    <input type="text" placeholder="Add to your list ..." id="description">
     <input type="submit" value="Submit" hidden>
   `;
+  form.setAttribute('id', 'todo-form');
   document.getElementById('todo-list').appendChild(form);
-};
-
-// function to iterate over the tasks array and populate an HTML list item element for each task
-const iterateTasks = (task) => {
-  const li = document.createElement('li');
-  li.innerHTML = `
-    <div>
-      <input type="checkbox">
-      ${task.description}
-    </div>
-  `;
-  document.getElementById('todo-list').appendChild(li);
 };
 
 // clear completed tasks btn
@@ -37,5 +26,5 @@ const clearBtn = () => {
 };
 
 export {
-  iterateTasks, addTitle, taskForm, clearBtn,
+  addTitle, taskForm, clearBtn,
 };
