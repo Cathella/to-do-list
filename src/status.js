@@ -1,14 +1,22 @@
+import tasks from './tasks.js';
+
 const getTasks = () => {
-  let tasks;
+  let todos = tasks;
 
   if (localStorage.getItem('tasks') === null) {
-    tasks = [];
+    localStorage.setItem('tasks', JSON.stringify(todos));
   } else {
-    tasks = JSON.parse(localStorage.getItem('tasks'));
+    todos = JSON.parse(localStorage.tasks);
   }
 
   return tasks;
 };
+
+const saveTasks = () => {
+  let todos = tasks;
+
+  localStorage.setItem('tasks', JSON.stringify(todos));
+}
 
 const checkStatus = (task) => task.checked;
 
@@ -40,8 +48,12 @@ const addTaskToList = (task) => {
       tasks[checkBox.id].completed = false;
     }
 
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    saveTasks();
   });
+
+  if (tasks[checkBox.id].completed == true) {
+    desc.classList.add('line-through');
+  }
 };
 
 const displayTasks = () => {
