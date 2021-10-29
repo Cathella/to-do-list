@@ -64,6 +64,15 @@ input[type=checkbox] {
   margin-right: 0.5em;
 }
 
+input[type=checkbox]:checked {
+  appearance: checkbox;
+}
+
+input[type=checkbox]:checked + span,
+.line-through {
+  text-decoration: line-through;
+}
+
 button {
   width: 100%;
   padding: 1.1em;
