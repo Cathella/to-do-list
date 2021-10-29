@@ -13,7 +13,7 @@ class Task {
 }
 
 window.onload = () => {
-  displayTasks(); // list tasks
+  displayTasks();
 };
 
 // add task event
@@ -23,7 +23,7 @@ document.getElementById('form').addEventListener('submit', (e) => {
   const tasks = getTasks();
   const description = document.getElementById('description').value;
   const completed = false;
-  const index = tasks.length + 1;
+  const index = tasks.length;
 
   const task = new Task(index, description, completed);
   addTaskToList(task);
