@@ -33,4 +33,3 @@ const clearButton = document.getElementById('clear-tasks');
 clearButton.addEventListener('click', () => {
   removeCompletedTasks(ul);
 });
-

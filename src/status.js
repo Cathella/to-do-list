@@ -8,13 +8,6 @@ class Task {
 
 let list = [];
 
-const getTasks = (ul) => {
-  list = JSON.parse(localStorage.tasks);
-  list.forEach((task) => {
-    addTaskToList(ul, task.index, task.completed, task.description);
-  });
-};
-
 const saveTasks = () => {
   localStorage.setItem('tasks', JSON.stringify(list));
 };
@@ -94,6 +87,13 @@ const addTaskToList = (ul, index, completed, description) => {
   // li.appendChild(ellipsis);
 
   // todo.appendChild(li);
+};
+
+const getTasks = (ul) => {
+  list = JSON.parse(localStorage.tasks);
+  list.forEach((task) => {
+    addTaskToList(ul, task.index, task.completed, task.description);
+  });
 };
 
 const addTask = (ul, completed, description) => {

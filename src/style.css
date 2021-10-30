@@ -20,7 +20,7 @@ header {
 }
 
 header i {
-  color:rgba(0, 0, 0, 35%);
+  color: rgba(0, 0, 0, 35%);
   transform: rotateZ(120deg);
 }
 
