@@ -8,10 +8,6 @@ class Task {
 
 let list = [];
 
-// const getTasks = () => {
-//   return JSON.parse(localStorage.getItem('tasks')) || [];
-// };
-
 const getTasks = (ul) => {
   list = JSON.parse(localStorage.tasks);
   list.forEach((task) => {
@@ -38,19 +34,11 @@ const removeTask = (index) => {
 const checkboxStatus = (task) => task.checked;
 
 const addTaskToList = (ul, index, completed, description) => {
-  // const tasks = getTasks();
-  // const todo = document.getElementById('todo-list');
   const li = document.createElement('li');
   const checkBox = document.createElement('input');
-  // const ellipsis = document.createElement('i');
-
-  // ellipsis.classList.add('fa-ellipsis-v', 'fas', 'float-right');
   checkBox.type = 'checkbox';
   checkBox.id = index;
   checkBox.checked = completed;
-  // checkBox.checked = task.completed;
-  // checkBox.classList.add('checks');
-  // checkBox.id = task.index;
 
   checkBox.addEventListener('change', () => {
     if (checkboxStatus(checkBox)) {
@@ -58,6 +46,7 @@ const addTaskToList = (ul, index, completed, description) => {
     } else {
       list[parseInt(checkBox.id, 10)].completed = false;
     }
+
     saveTasks();
   });
 
@@ -85,7 +74,7 @@ const addTaskToList = (ul, index, completed, description) => {
   const elBtn = document.createElement('button');
   elBtn.className = 'element-button';
   elBtn.addEventListener('click', (e) => {
-    removeTask(e.currentTarget.parentNode.childNodes[0].id);
+    removeTask(e.currentTarget.parentNode.childNodes[0].childNodes[0].id);
     e.target.closest('li').remove();
   }, false);
 
@@ -93,9 +82,12 @@ const addTaskToList = (ul, index, completed, description) => {
   icon.className = 'fas fa-ellipsis-v';
   const icon2 = document.createElement('i');
   icon2.className = 'fas fa-trash';
-  elBtn.append(icon, icon2);
+  elBtn.append(icon2);
 
-  li.append(checkBox, desc, elBtn);
+  const div = document.createElement('div');
+  div.append(checkBox, desc);
+
+  li.append(div, elBtn);
   ul.prepend(li);
 
   // li.classList.add('tasks');
@@ -108,45 +100,9 @@ const addTaskToList = (ul, index, completed, description) => {
   // todo.appendChild(li);
 };
 
-// const changeStatus = () => {
-//   if (checkBox.checked) {
-//     tasks[checkBox.id].completed = true;
-//   } else {
-//     tasks[checkBox.id].completed = false;
-//   }
-
-//   localStorage.setItem('tasks', JSON.stringify(tasks));
-// };
-
-// const checkStatus = () => {
-//   if (JSON.parse(window.localStorage.getItem('tasks'))) {
-//     tasks = JSON.parse(window.localStorage.getItem('tasks'));
-//     tasks.forEach((task) => {
-//       const checkBox = document.getElementById(task.index);
-//       checkBox.checked = task.completed;
-//       changeStatus(checkBox);
-//     });
-//   } else {
-//     localStorage.setItem('tasks', JSON.stringify(tasks));
-//   }
-// };
-
-// const addListeners = () => {
-//   const checks = document.querySelectorAll('.checks');
-//   checks.forEach((check) => {
-//     check.addEventListener('change', () => changeStatus(check));
-//     checkStatus();
-//   });
-// };
-
-// const displayTasks = () => {
-//   const tasks = getTasks();
-//   tasks.forEach((task) => addTaskToList(task));
-// };
-
 const addTask = (ul, completed, description) => {
-  list.push(new Task(list.length, completed, description));
-  addTaskToList(ul, taskList.length - 1, completed, description);
+  list.push(new Task(list.length, description, completed));
+  addTaskToList(ul, list.length - 1, completed, description);
   saveTasks();
 };
 

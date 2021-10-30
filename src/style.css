@@ -24,16 +24,9 @@ header i {
   transform: rotateZ(120deg);
 }
 
-h3 {
-}
-
 main {
   position: relative;
   min-height: 550px;
-}
-
-.float-right {
-  float: right;
 }
 
 .container {
@@ -54,6 +47,9 @@ ul {
 }
 
 li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 1em;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
@@ -61,9 +57,10 @@ li {
   color: #777;
 }
 
-form {
-  width: 100%;
-  border-bottom: 1px solid #ddd;
+.element-button {
+  width: inherit;
+  padding: 0;
+  background: transparent;
 }
 
 input[type=text] {
@@ -73,6 +70,7 @@ input[type=text] {
   font-size: 1em;
   outline: none;
   width: 100%;
+  border-bottom: 1px solid #ddd;
 }
 
 input[type=checkbox] {
