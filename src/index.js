@@ -1,7 +1,7 @@
 import './style.css';
 import {
-  addTask, getTasks, removeCompletedTasks,
-} from './status.js';
+  createTask, getTasks, removeCompletedTasks,
+} from './actions.js';
 
 const list = document.getElementById('todo-list');
 const ul = document.createElement('ul');
@@ -22,7 +22,7 @@ input.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     e.preventDefault();
     if (input.value !== '') {
-      addTask(ul, false, input.value);
+      createTask(ul, false, input.value);
       input.value = '';
     }
   }

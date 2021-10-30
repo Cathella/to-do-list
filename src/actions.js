@@ -1,3 +1,5 @@
+// contains task todo options
+
 class Task {
   constructor(index, description, completed = false) {
     this.index = index;
@@ -13,7 +15,7 @@ const saveTasks = () => {
 };
 
 const reshuffleIndex = () => {
-  for (let i = 0; i < list.length; i += 1) {
+  for (let i = 1; i < list.length; i += 1) {
     list[i].index = i;
   }
 };
@@ -96,9 +98,9 @@ const getTasks = (ul) => {
   });
 };
 
-const addTask = (ul, completed, description) => {
-  list.push(new Task(list.length, description, completed));
-  addTaskToList(ul, list.length - 1, completed, description);
+const createTask = (ul, completed, description) => {
+  list.push(new Task(list.length + 1, description, completed));
+  addTaskToList(ul, list.length, completed, description);
   saveTasks();
 };
 
@@ -115,5 +117,5 @@ const removeCompletedTasks = (ul) => {
 };
 
 export {
-  addTask, getTasks, removeCompletedTasks,
+  createTask, getTasks, removeCompletedTasks,
 };
