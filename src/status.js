@@ -2,8 +2,6 @@ const getTasks = () => {
   return JSON.parse(localStorage.getItem('tasks')) || [];
 };
 
-const checkStatus = (task) => task.checked;
-
 const addTaskToList = (task) => {
   const tasks = getTasks();
   const todo = document.getElementById('todo-list');
@@ -13,14 +11,13 @@ const addTaskToList = (task) => {
   const ellipsis = document.createElement('i');
 
   ellipsis.classList.add('fa-ellipsis-v', 'fas', 'float-right');
-
   checkBox.type = 'checkbox';
   checkBox.checked = task.completed;
-  checkBox.classList.add('check-box');
+  checkBox.classList.add('checks');
   checkBox.id = task.index;
 
   desc.innerHTML = task.description;
-  li.classList.add('list-item');
+  li.classList.add('tasks');
   li.id = task.index;
 
   li.appendChild(checkBox);
@@ -28,15 +25,36 @@ const addTaskToList = (task) => {
   li.appendChild(ellipsis);
 
   todo.appendChild(li);
+};
 
-  checkBox.addEventListener('change', () => {
-    if (checkStatus(checkBox)) {
-      tasks[checkBox.id].completed = true;
-    } else {
-      tasks[checkBox.id].completed = false;
-    }
+const changeStatus = () => {
+  if (checkBox.checked) {
+    tasks[checkBox.id].completed = true;
+  } else {
+    tasks[checkBox.id].completed = false;
+  }
 
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+};
+
+const checkStatus = () => {
+  if (JSON.parse(window.localStorage.getItem('tasks'))) {
+    tasks = getTasks();
+    tasks.forEach((task) => {
+      const checkBox = document.getElementById(task.index);
+      checkBox.checked = task.completed;
+      changeStatus(checkBox);
+    });
+  } else {
     localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+};
+
+const addListeners = () => {
+  const checks = document.querySelectorAll('.checks');
+  checks.forEach((check) => {
+    check.addEventListener('change', () => changeStatus(check));
+    checkStatus();
   });
 };
 
