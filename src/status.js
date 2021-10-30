@@ -54,17 +54,13 @@ const addTaskToList = (ul, index, completed, description) => {
   desc.contentEditable = true;
   desc.innerHTML = description;
   desc.addEventListener('focus', () => {
-    desc.parentNode.style.backgroundColor = 'lightyellow';
-    desc.parentNode.childNodes[2].style.pointerEvents = 'initial';
-    desc.parentNode.childNodes[2].childNodes[0].style.display = 'none';
-    desc.parentNode.childNodes[2].childNodes[2].style.display = 'initial';
+    desc.parentNode.parentNode.style.backgroundColor = 'lightyellow';
+    desc.parentNode.parentNode.childNodes[1].style.pointerEvents = 'initial';
   });
 
   desc.addEventListener('focusout', (e) => {
-    desc.parentNode.style.backgroundColor = 'initial';
-    desc.parentNode.childNodes[2].childNodes[0].style.display = 'initial';
-    desc.parentNode.childNodes[2].childNodes[2].style.display = 'none';
-    list[parseInt(checkBox.id, 10)].description = e.composedPath()[0].innerText;
+    desc.parentNode.parentNode.style.backgroundColor = 'initial';
+    list[parseInt(checkBox.id, 10)].desc = e.composedPath()[0].innerText;
     saveTasks();
     setTimeout(() => {
       desc.parentNode.childNodes[2].style.pointerEvents = 'none';
