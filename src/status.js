@@ -1,15 +1,6 @@
 const getTasks = () => {
-  let tasks;
-
-  if (localStorage.getItem('tasks') === null) {
-    tasks = [];
-  } else {
-    tasks = JSON.parse(localStorage.getItem('tasks'));
-  }
-
-  return tasks;
+  return JSON.parse(localStorage.getItem('tasks')) || [];
 };
-
 
 const checkStatus = (task) => task.checked;
 
@@ -19,6 +10,9 @@ const addTaskToList = (task) => {
   const li = document.createElement('li');
   const desc = document.createElement('span');
   const checkBox = document.createElement('input');
+  const ellipsis = document.createElement('i');
+
+  ellipsis.classList.add('fa-ellipsis-v', 'fas', 'float-right');
 
   checkBox.type = 'checkbox';
   checkBox.checked = task.completed;
@@ -31,6 +25,7 @@ const addTaskToList = (task) => {
 
   li.appendChild(checkBox);
   li.appendChild(desc);
+  li.appendChild(ellipsis);
 
   todo.appendChild(li);
 
@@ -43,10 +38,6 @@ const addTaskToList = (task) => {
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
   });
-
-  // if (tasks[checkBox.id].completed === true) {
-  //   desc.classList.add('line-through');
-  // }
 };
 
 const displayTasks = () => {

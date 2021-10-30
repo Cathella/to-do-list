@@ -11,14 +11,29 @@ body {
   background: #ffc01d;
 }
 
-h3 {
-  padding: 0.8em 1em;
+header {
   border-bottom: 1px solid #ddd;
+  padding: 0.8em 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header i {
+  color:rgba(0, 0, 0, 35%);
+  transform: rotateZ(120deg);
+}
+
+h3 {
 }
 
 main {
   position: relative;
   min-height: 550px;
+}
+
+.float-right {
+  float: right;
 }
 
 .container {
