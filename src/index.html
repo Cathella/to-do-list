@@ -13,15 +13,12 @@
         <h3>Today's To Do</h3>
         <i class="fas fa-sync-alt"></i>
       </header>
-      <form action="" id="form">
-        <input type="text" placeholder="Add to your list ..." id="description" onfocus="this.value=''">
-        <input type="submit" value="Submit" hidden>
-      </form>
+      <input type="text" id="input-task" placeholder="Add to your list ...">
   
       <!-- create an empty todo list placeholder -->
-      <ul id="todo-list"></ul>
+      <div id="todo-list"></div>
       
-      <button id="clear-tasks">Clear all completed</button>
+      <button type="button" class="clear-btn" id="clear-tasks">Clear all completed</button>
     </div>
   </main>
 

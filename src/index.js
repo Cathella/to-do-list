@@ -1,20 +1,20 @@
 import './style.css';
 
 import {
-  displayTasks, addTask, addTaskToList, getTasks, addListeners, deleteCompletedTasks,
+  addTask, getTasks, removeCompletedTasks,
 } from './status.js';
 
-class Task {
-  constructor(index, description, completed) {
-    this.index = index;
-    this.description = description;
-    this.completed = completed;
-  }
-}
+const list = document.getElementById('todo-list');
+const ul = document.createElement('ul');
+ul.classList.add('item-list');
+list.append(ul);
 
 window.onload = () => {
-  displayTasks();
-  addListeners();
+  if (localStorage.getItem('tasks') === null) {
+    localStorage.setItem('tasks', JSON.stringify([]));
+  } else {
+    getTasks(ul);
+  }
 };
 
 // add task event
@@ -24,7 +24,7 @@ input.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     e.preventDefault();
     if (input.value !== '') {
-      taskFunctions.addElement(ul, false, input.value);
+      addTask(ul, false, input.value);
       input.value = '';
     }
   }
@@ -47,6 +47,6 @@ input.addEventListener('keypress', (e) => {
 
 const clearButton = document.getElementById('clear-tasks');
 clearButton.addEventListener('click', () => {
-  deleteCompletedTasks(ul);
+  removeCompletedTasks(ul);
 });
 

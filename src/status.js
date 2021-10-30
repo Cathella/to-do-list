@@ -1,7 +1,22 @@
+class Task {
+  constructor(index, description, completed = false) {
+    this.index = index;
+    this.description = description;
+    this.completed = completed;
+  }
+}
+
 let list = [];
 
-const getTasks = () => {
-  return JSON.parse(localStorage.getItem('tasks')) || [];
+// const getTasks = () => {
+//   return JSON.parse(localStorage.getItem('tasks')) || [];
+// };
+
+const getTasks = (ul) => {
+  list = JSON.parse(localStorage.tasks);
+  list.forEach((task) => {
+    addTaskToList(ul, task.index, task.completed, task.description);
+  });
 };
 
 const saveTasks = () => {
@@ -80,7 +95,7 @@ const addTaskToList = (ul, index, completed, description) => {
   icon2.className = 'fas fa-trash';
   elBtn.append(icon, icon2);
 
-  item.append(checkBox, desc, elBtn);
+  li.append(checkBox, desc, elBtn);
   ul.prepend(li);
 
   // li.classList.add('tasks');
@@ -148,5 +163,5 @@ const removeCompletedTasks = (ul) => {
 };
 
 export {
-  displayTasks, addTask, addTaskToList, getTasks, addListeners, removeCompletedTasks,
+  addTask, getTasks, removeCompletedTasks,
 };
