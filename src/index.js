@@ -1,34 +1,35 @@
 import './style.css';
-
 import {
-  displayTasks, addTask, addTaskToList, getTasks,
-} from './status.js';
+  createTask, getTasks, removeCompletedTasks,
+} from './actions.js';
 
-class Task {
-  constructor(index, description, completed) {
-    this.index = index;
-    this.description = description;
-    this.completed = completed;
-  }
-}
+const list = document.getElementById('todo-list');
+const ul = document.createElement('ul');
+ul.classList.add('item-list');
+list.append(ul);
 
 window.onload = () => {
-  displayTasks();
+  if (localStorage.getItem('tasks') === null) {
+    localStorage.setItem('tasks', JSON.stringify([]));
+  } else {
+    getTasks(ul);
+  }
 };
 
 // add task event
-document.getElementById('form').addEventListener('submit', (e) => {
-  e.preventDefault();
+const input = document.querySelector('#input-task');
+input.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    if (input.value !== '') {
+      createTask(ul, false, input.value);
+      input.value = '';
+    }
+  }
+});
 
-  const tasks = getTasks();
-  const description = document.getElementById('description').value;
-  const completed = false;
-  const index = tasks.length;
-
-  const task = new Task(index, description, completed);
-  addTaskToList(task);
-  addTask(task);
-
-  e.target.reset();
-  return false;
+// clear completed tasks - event
+const clearButton = document.getElementById('clear-tasks');
+clearButton.addEventListener('click', () => {
+  removeCompletedTasks(ul);
 });
