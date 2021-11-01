@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #ffc01d;
+}
+
+header {
+  border-bottom: 1px solid #ddd;
+  padding: 0.8em 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header i {
+  color: rgba(0, 0, 0, 35%);
+  transform: rotateZ(120deg);
+}
+
+main {
+  position: relative;
+  min-height: 550px;
+}
+
+.container {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 500px;
+  background: white;
+  border-radius: 0.5em;
+  box-shadow: 10px 10px 35px rgba(0, 0, 0, 15%), -10px 0 35px rgba(0, 0, 0, 15%);
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  font-size: 16px;
+  color: #777;
+}
+
+.element-button {
+  width: inherit;
+  padding: 0;
+  background: transparent;
+}
+
+input[type=text] {
+  padding: 0.8em 1em;
+  font-style: italic;
+  border: none;
+  font-size: 1em;
+  outline: none;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+
+input[type=checkbox] {
+  margin-right: 0.5em;
+}
+
+input[type=checkbox]:checked {
+  appearance: checkbox;
+}
+
+input[type=checkbox]:checked + span,
+.line-through {
+  text-decoration: line-through;
+}
+
+button {
+  width: 100%;
+  padding: 1.1em;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0 0 0.5em 0.5em;
+  font-size: 1em;
+  color: #777;
+}
