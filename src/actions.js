@@ -80,15 +80,6 @@ const addTaskToList = (ul, index, completed, description) => {
 
   li.append(div, elBtn);
   ul.prepend(li);
-
-  // li.classList.add('tasks');
-  // li.id = task.index;
-
-  // li.appendChild(checkBox);
-  // li.appendChild(desc);
-  // li.appendChild(ellipsis);
-
-  // todo.appendChild(li);
 };
 
 const getTasks = (ul) => {
