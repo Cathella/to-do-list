@@ -89,10 +89,15 @@ const getTasks = (ul) => {
   });
 };
 
+const addTask = (list, task) => {
+  task.push({ desc: list, completed: false, index: task.length + 1});
+  localStorage.setItem('tasks', JSON.stringify(task));
+};
+
 const createTask = (ul, completed, description) => {
   list.push(new Task(list.length + 1, description, completed));
   addTaskToList(ul, list.length, completed, description);
-  saveTasks();
+  localStorage.setItem('tasks', JSON.stringify(list));
 };
 
 const removeCompletedTasks = (ul) => {
@@ -108,5 +113,5 @@ const removeCompletedTasks = (ul) => {
 };
 
 export {
-  createTask, getTasks, removeCompletedTasks,
+  createTask, getTasks, removeCompletedTasks, addTask,
 };

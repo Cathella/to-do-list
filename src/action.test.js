@@ -1,17 +1,19 @@
-/**
- * @jest-environment jsdom
- */
-
-const actions = require('./actions');
+import { addTask, removeTask } from './actions';
 
 // add item
-test ('Add a task to the list', () => {
-  document.body.innerHTML = 
-  '<div>' +
-  ' <ul id="list"></li>' +
-  '</div>';
-  actions.addTaskToList();
-  const list = document.querySelectorAll('#list li');
-  expect(list).toHaveLength(1);
+describe('Add task to the list', () => {
+  const list = [];
+
+  test('add item to list', () => {
+    addTask('complete this milestone', list);
+    expect(list).toHaveLength(1);
+  });
 });
+
 // delete item
+describe('Delete task form the list', () => {
+
+  test('should remove task from array', () => {
+
+  });
+});
