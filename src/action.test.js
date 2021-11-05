@@ -1,4 +1,7 @@
-import { addTask, removeTask } from './actions';
+/**
+ * @jest-environment jsdom
+ */
+import { addTask, removeTask, saveTasks } from './actions';
 
 // add item
 describe('Add task to the list', () => {
@@ -8,12 +11,10 @@ describe('Add task to the list', () => {
     addTask('complete this milestone', list);
     expect(list).toHaveLength(1);
   });
-});
-
-// delete item
-describe('Delete task form the list', () => {
-
   test('should remove task from array', () => {
-
+    const lengthBeforeRemove = Number(JSON.parse(localStorage.getItem('tasks')).length);
+    removeTask(1);
+    const lengthAfterRemove = Number(JSON.parse(localStorage.getItem('tasks')).length);
+    expect(lengthAfterRemove).toBe(lengthBeforeRemove - 1);
   });
 });

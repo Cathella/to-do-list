@@ -113,5 +113,5 @@ const removeCompletedTasks = (ul) => {
 };
 
 export {
-  createTask, getTasks, removeCompletedTasks, addTask,
+  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks,
 };
