@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { addTask, removeTask, saveTasks } from './actions';
+import { addTask, removeTask } from './actions.js';
 
 // add item
 describe('Add task to the list', () => {
