@@ -26,6 +26,17 @@ const removeTask = (index) => {
   saveTasks();
 };
 
+const removeItem = (elem, tasks) => {
+  const text = elem.children[0].children[1].value;
+  tasks.forEach((task) => {
+    if (task.description === text) {
+      tasks.splice(tasks.indexOf(task), 1);
+    }
+  });
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  elem.parentElement.remove();
+};
+
 const checkboxStatus = (task) => task.checked;
 
 const addTaskToList = (ul, index, completed, description) => {
@@ -80,15 +91,6 @@ const addTaskToList = (ul, index, completed, description) => {
 
   li.append(div, elBtn);
   ul.prepend(li);
-
-  // li.classList.add('tasks');
-  // li.id = task.index;
-
-  // li.appendChild(checkBox);
-  // li.appendChild(desc);
-  // li.appendChild(ellipsis);
-
-  // todo.appendChild(li);
 };
 
 const getTasks = (ul) => {
@@ -98,10 +100,15 @@ const getTasks = (ul) => {
   });
 };
 
+const addTask = (list, task) => {
+  task.push({ desc: list, completed: false, index: task.length + 1 });
+  localStorage.setItem('tasks', JSON.stringify(task));
+};
+
 const createTask = (ul, completed, description) => {
   list.push(new Task(list.length + 1, description, completed));
   addTaskToList(ul, list.length, completed, description);
-  saveTasks();
+  localStorage.setItem('tasks', JSON.stringify(list));
 };
 
 const removeCompletedTasks = (ul) => {
@@ -117,5 +124,5 @@ const removeCompletedTasks = (ul) => {
 };
 
 export {
-  createTask, getTasks, removeCompletedTasks,
+  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem,
 };
