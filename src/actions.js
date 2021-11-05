@@ -26,6 +26,17 @@ const removeTask = (index) => {
   saveTasks();
 };
 
+const removeItem = (elem, tasks) => {
+  const text = elem.children[0].children[1].value;
+  tasks.forEach((task) => {
+    if (task.description === text) {
+      tasks.splice(tasks.indexOf(task), 1);
+    }
+  });
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  elem.parentElement.remove();
+};
+
 const checkboxStatus = (task) => task.checked;
 
 const addTaskToList = (ul, index, completed, description) => {
@@ -113,5 +124,5 @@ const removeCompletedTasks = (ul) => {
 };
 
 export {
-  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks,
+  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem
 };
