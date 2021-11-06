@@ -7,7 +7,7 @@ import { editTask, allCompletedTasks, checkStatus } from './actions.js';
 // updating task's completed status
 describe('Should check completed status of the task', () => {
   const list = [
-    { description: 'This is a task', completed: false, index: 1, },
+    { description: 'This is a task', completed: false, index: 1 },
   ];
   const [task] = list;
   document.body.innerHTML = '<input type="checkbox" class="checked-box" checked>'
@@ -27,27 +27,27 @@ describe('Should check completed status of the task', () => {
 
 // editing a task
 describe('Should edit a task', () => {
-    test('should edit task from previous task to new task', () => {
-        const list = [
-          {
-            description: 'This is a task',
-            completed: false,
-            index: 1,
-          },
-        ];
-        const [task] = list;
-        const newTask = 'This is a modified task';
-        editTask(newTask, task, list);
-        expect(task.description).toMatch('This is a modified task');
-      });
+  test('should edit task from previous task to new task', () => {
+    const list = [
+      {
+        description: 'This is a task',
+        completed: false,
+        index: 1,
+      },
+    ];
+    const [task] = list;
+    const newTask = 'This is a modified task';
+    editTask(newTask, task, list);
+    expect(task.description).toMatch('This is a modified task');
+  });
 });
 
 // clear all completed tasks
 describe('Should remove all completed tasks', () => {
   let tasks = [
-    { description: 'This is task One', completed: false, index: 1, },
-    { description: 'This is task Two', completed: true, index: 2, },
-    { description: 'This is task Three', completed: false, index: 3, },
+    { description: 'This is task One', completed: false, index: 1 },
+    { description: 'This is task Two', completed: true, index: 2 },
+    { description: 'This is task Three', completed: false, index: 3 },
   ];
 
   const notCompletedTask = {

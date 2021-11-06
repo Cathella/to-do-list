@@ -84,10 +84,7 @@ const addTaskToList = (ul, index, completed, description) => {
     desc.parentNode.parentNode.style.backgroundColor = 'lightyellow';
     desc.parentNode.parentNode.childNodes[1].style.pointerEvents = 'initial';
   });
-
-  desc.addEventListener('input', (e) => {
-    const description = e.target.innerText;
-    const tasks = getTasks().map(task => {
+    const tasks = getTasks().map((task) => {
       if (task.index === index) {
         task.description = description;
       }
@@ -159,6 +156,11 @@ const allCompletedTasks = (task) => {
   task = task.filter((elem) => elem.completed === false);
   updateIndex(task);
   localStorage.setItem('tasks', JSON.stringify(task));
+};
+
+export {
+  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem, editTask, allCompletedTasks, checkStatus,
+ringify(task));
 };
 
 export {
