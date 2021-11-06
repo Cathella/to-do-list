@@ -37,6 +37,11 @@ const removeItem = (elem, tasks) => {
   elem.parentElement.remove();
 };
 
+const editTask = (tx, task, list) => {
+  task.description = tx;
+  localStorage.setItem('tasks', JSON.stringify(list));
+};
+
 const checkboxStatus = (task) => task.checked;
 
 const addTaskToList = (ul, index, completed, description) => {
@@ -135,5 +140,5 @@ const removeCompletedTasks = (ul) => {
 };
 
 export {
-  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem, checkboxStatus
+  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem, editTask,
 };

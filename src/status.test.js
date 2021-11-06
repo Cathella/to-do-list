@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import {  } from './actions.js';
+import { editTask } from './actions.js';
 
 // updating task's completed status
 describe('', () => {
@@ -10,8 +10,8 @@ describe('', () => {
 });
 
 // editing a task
-describe('', () => {
-
+describe('Should edit a task', () => {
+  
 });
 
 // clear all completed tasks
