@@ -139,6 +139,12 @@ const removeCompletedTasks = (ul) => {
   saveTasks();
 };
 
+const removeCompleted = (task) => {
+  task = task.filter((elem) => elem.completed === false);
+  updateIndex(task);
+  localStorage.setItem('tasks', JSON.stringify(task));
+};
+
 export {
-  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem, editTask,
+  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem, editTask, removeCompleted,
 };
