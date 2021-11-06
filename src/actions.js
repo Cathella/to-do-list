@@ -20,6 +20,14 @@ const reshuffleIndex = () => {
   }
 };
 
+const updateIndex = (task) => {
+  let list = 1;
+  task.forEach((item) => {
+    item.index = list;
+    list += 1;
+  });
+};
+
 const removeTask = (index) => {
   list = list.filter((e) => e.index !== parseInt(index, 10));
   reshuffleIndex();
@@ -37,7 +45,20 @@ const removeItem = (elem, tasks) => {
   elem.parentElement.remove();
 };
 
+const editTask = (tx, task, list) => {
+  task.description = tx;
+  localStorage.setItem('tasks', JSON.stringify(list));
+};
+
 const checkboxStatus = (task) => task.checked;
+
+const checkStatus = (elem, task) => {
+  if (elem.checked) {
+    task.completed = true;
+  } else {
+    task.completed = false;
+  }
+};
 
 const addTaskToList = (ul, index, completed, description) => {
   const li = document.createElement('li');
@@ -123,6 +144,21 @@ const removeCompletedTasks = (ul) => {
   saveTasks();
 };
 
+const allCompletedTasks = (task) => {
+  task = task.filter((elem) => elem.completed === false);
+  updateIndex(task);
+  localStorage.setItem('tasks', JSON.stringify(task));
+};
+
 export {
-  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem,
+  createTask,
+  getTasks,
+  removeCompletedTasks,
+  addTask,
+  removeTask,
+  saveTasks,
+  removeItem,
+  editTask,
+  allCompletedTasks,
+  checkStatus,
 };
