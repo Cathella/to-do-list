@@ -52,6 +52,14 @@ const editTask = (tx, task, list) => {
 
 const checkboxStatus = (task) => task.checked;
 
+const checkStatus = (elem, task) => {
+  if (elem.checked) {
+    task.completed = true;
+  } else {
+    task.completed = false;
+  }
+};
+
 const addTaskToList = (ul, index, completed, description) => {
   const li = document.createElement('li');
   const checkBox = document.createElement('input');
@@ -154,5 +162,5 @@ const allCompletedTasks = (task) => {
 };
 
 export {
-  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem, editTask, allCompletedTasks,
+  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem, editTask, allCompletedTasks, checkStatus
 };

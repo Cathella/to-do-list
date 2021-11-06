@@ -2,11 +2,26 @@
  * @jest-environment jsdom
  */
 
-import { editTask, allCompletedTasks } from './actions.js';
+import { editTask, allCompletedTasks, checkStatus } from './actions.js';
 
 // updating task's completed status
-describe('', () => {
+describe('Should check completed status of the task', () => {
+  const list = [
+    { description: 'This is a task', completed: false, index: 1, },
+  ];
+  const [task] = list;
+  document.body.innerHTML = '<input type="checkbox" class="checked-box" checked>'
+    + '<input type="checkbox" class="checked-box">';
+  const elems = document.querySelectorAll('.checked-box');
+  test('should mark task as completed', () => {
+    checkStatus(elems[0], task);
+    expect(task.completed).toBeTruthy();
+  });
 
+  test('test marks as not completed', () => {
+    checkStatus(elems[1], task);
+    expect(task.completed).toBeFalsy();
+  });
 });
 
 // editing a task
