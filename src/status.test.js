@@ -13,12 +13,13 @@ describe('Should check completed status of the task', () => {
   document.body.innerHTML = '<input type="checkbox" class="checked-box" checked>'
     + '<input type="checkbox" class="checked-box">';
   const elems = document.querySelectorAll('.checked-box');
+
   test('should mark task as completed', () => {
     checkStatus(elems[0], task);
     expect(task.completed).toBeTruthy();
   });
 
-  test('test marks as not completed', () => {
+  test('should mark task as not completed', () => {
     checkStatus(elems[1], task);
     expect(task.completed).toBeFalsy();
   });
