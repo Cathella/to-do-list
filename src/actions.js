@@ -20,6 +20,14 @@ const reshuffleIndex = () => {
   }
 };
 
+const updateIndex = (task) => {
+  let list = 1;
+  task.forEach((item) => {
+    item.index = list;
+    list += 1;
+  });
+};
+
 const removeTask = (index) => {
   list = list.filter((e) => e.index !== parseInt(index, 10));
   reshuffleIndex();
@@ -139,12 +147,12 @@ const removeCompletedTasks = (ul) => {
   saveTasks();
 };
 
-const removeCompleted = (task) => {
+const allCompletedTasks = (task) => {
   task = task.filter((elem) => elem.completed === false);
   updateIndex(task);
   localStorage.setItem('tasks', JSON.stringify(task));
 };
 
 export {
-  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem, editTask, removeCompleted,
+  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem, editTask, allCompletedTasks,
 };
