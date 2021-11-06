@@ -64,13 +64,24 @@ const addTaskToList = (ul, index, completed, description) => {
     desc.parentNode.parentNode.childNodes[1].style.pointerEvents = 'initial';
   });
 
+  desc.addEventListener('input', (e) => {
+    const description = e.target.innerText;
+    const tasks = getTasks().map(task => {
+      if (task.index === index) {
+        task.description = description;
+      }
+      return task;
+    });
+    localStorage.setItem('tasks', JSON.stringify(list));
+  });
+
   desc.addEventListener('focusout', (e) => {
     desc.parentNode.parentNode.style.backgroundColor = 'initial';
-    list[parseInt(checkBox.id, 10)].desc = e.composedPath()[0].innerText;
-    saveTasks();
-    setTimeout(() => {
-      desc.parentNode.childNodes[2].style.pointerEvents = 'none';
-    }, 500);
+    // list[parseInt(checkBox.id, 10)].desc = e.composedPath()[0].innerText;
+    // saveTasks();
+    // setTimeout(() => {
+    //   desc.parentNode.childNodes[2].style.pointerEvents = 'none';
+    // }, 500);
   });
 
   const elBtn = document.createElement('button');
@@ -124,5 +135,5 @@ const removeCompletedTasks = (ul) => {
 };
 
 export {
-  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem,
+  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem, checkboxStatus
 };
