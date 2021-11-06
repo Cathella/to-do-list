@@ -84,22 +84,14 @@ const addTaskToList = (ul, index, completed, description) => {
     desc.parentNode.parentNode.style.backgroundColor = 'lightyellow';
     desc.parentNode.parentNode.childNodes[1].style.pointerEvents = 'initial';
   });
-    const tasks = getTasks().map((task) => {
-      if (task.index === index) {
-        task.description = description;
-      }
-      return task;
-    });
-    localStorage.setItem('tasks', JSON.stringify(list));
-  });
 
   desc.addEventListener('focusout', (e) => {
     desc.parentNode.parentNode.style.backgroundColor = 'initial';
-    // list[parseInt(checkBox.id, 10)].desc = e.composedPath()[0].innerText;
-    // saveTasks();
-    // setTimeout(() => {
-    //   desc.parentNode.childNodes[2].style.pointerEvents = 'none';
-    // }, 500);
+    list[parseInt(checkBox.id, 10)].desc = e.composedPath()[0].innerText;
+    saveTasks();
+    setTimeout(() => {
+      desc.parentNode.childNodes[2].style.pointerEvents = 'none';
+    }, 500);
   });
 
   const elBtn = document.createElement('button');
@@ -156,11 +148,6 @@ const allCompletedTasks = (task) => {
   task = task.filter((elem) => elem.completed === false);
   updateIndex(task);
   localStorage.setItem('tasks', JSON.stringify(task));
-};
-
-export {
-  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem, editTask, allCompletedTasks, checkStatus,
-ringify(task));
 };
 
 export {
