@@ -151,5 +151,14 @@ const allCompletedTasks = (task) => {
 };
 
 export {
-  createTask, getTasks, removeCompletedTasks, addTask, removeTask, saveTasks, removeItem, editTask, allCompletedTasks, checkStatus
+  createTask, 
+  getTasks, 
+  removeCompletedTasks, 
+  addTask, 
+  removeTask, 
+  saveTasks, 
+  removeItem, 
+  editTask, 
+  allCompletedTasks, 
+  checkStatus,
 };
